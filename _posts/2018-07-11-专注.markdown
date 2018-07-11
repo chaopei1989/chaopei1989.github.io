@@ -15,7 +15,10 @@
 > 算法描述：
 1. 所有事情的列表大小为 N，另 i = N
 2. 我们取第 i 件事
-3. 用函数 F 计算对于当前时间 t 下该事情的优先级 P(i) $priority=F(emergency(t),significance(t),interest(t))$
+3. 用函数 F 计算对于当前时间 t 下该事情的优先级 priority
+$$
+priority=F(emergency(t),significance(t),interest(t))
+$$
 如果 i = N 则转到第 5 步
 4. 若 P(i+1)>P(i)，则将第 i+1 件事和第 i 件事换个位置
 5. i = i - 1，如果 i > 1 则转到第 2 步
