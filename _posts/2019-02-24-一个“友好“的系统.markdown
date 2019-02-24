@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "一个“友好“的系统"
+date:   2019-02-19 15:39:00 +0800
+categories: system 
+---
+
+
+
