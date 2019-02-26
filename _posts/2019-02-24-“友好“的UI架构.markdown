@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "系统与系统性"
+title:  "“友好“的UI架构"
 date:   2019-02-19 15:39:00 +0800
 categories: system 
 ---
