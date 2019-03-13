@@ -18,12 +18,12 @@ permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 # Directory
-source_dir: _posts
-public_dir: _posts
-tag_dir: _posts
-archive_dir: _posts
-category_dir: _posts
-code_dir: _posts
+source_dir: .
+public_dir: .
+tag_dir: .
+archive_dir: .
+category_dir: .
+code_dir: .
 i18n_dir: :lang
 skip_render:
 
