@@ -24,7 +24,7 @@ github_username:  chaopei1989
 
 # Build settings
 markdown: kramdown
-theme: replica
+theme: minima
 plugins:
   - jekyll-feed
 
