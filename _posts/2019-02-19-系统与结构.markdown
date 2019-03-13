@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "系统化思维与系统设计"
+title:  "系统与结构"
 date:   2019-02-19 15:39:00 +0800
 categories: system 
 ---
