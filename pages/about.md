@@ -3,6 +3,7 @@ layout: post
 title:  "关于我"
 date:   2019-02-24 18:48:00 +0800
 categories: introduction
+permalink: /about/
 ---
 
 ## 我是谁
