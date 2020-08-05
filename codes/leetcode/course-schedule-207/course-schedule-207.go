@@ -28,7 +28,7 @@ import (
 	"fmt"
 )
 
-// 使用邻接表(adjacency), 拓扑排序实现
+// 使用邻接表(adjacency), BFS 实现
 func canFinish(numCourses int, prerequisites [][]int) bool {
 	if numCourses == 0 {
 		return true
