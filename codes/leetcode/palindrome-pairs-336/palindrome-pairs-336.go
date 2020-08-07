@@ -41,13 +41,12 @@ func buildTrie(root *Node, words []string) {
 			var node = curr.children[x]
 			if node == nil {
 				node = new(Node)
-				if i == len-1 {
-					node.index = index
-				} else {
-					node.index = -1
-				}
+				node.index = -1
 				node.v = word[i]
 				curr.children[x] = node
+			}
+			if i == len-1 {
+				node.index = index
 			}
 			curr = node
 		}
@@ -102,7 +101,7 @@ func palindromePairs(words []string) [][]int {
 	for index, word := range words {
 		for i := 0; i <= len(word); i++ {
 			// 前缀回文, 存在空串
-			if isPalindrome(word, 0, i-1) {
+			if i != 0 && isPalindrome(word, 0, i-1) {
 				// 查找后缀的反转是否存在
 				var hw = hasWord(root, word, i, len(word)-1, true)
 				if hw >= 0 && hw != index {
@@ -124,6 +123,9 @@ func palindromePairs(words []string) [][]int {
 }
 
 func main() {
-	res := palindromePairs([]string{"abcd", "dcba", "lls", "s", "sssll"})
+	var res [][]int
+	res = palindromePairs([]string{"abcd", "dcba", "lls", "s", "sssll"})
+	fmt.Println(res)
+	res = palindromePairs([]string{"aba", "ba", "a", "caba"})
 	fmt.Println(res)
 }

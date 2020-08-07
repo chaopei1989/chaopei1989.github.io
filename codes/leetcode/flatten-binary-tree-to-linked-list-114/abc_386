@@ -1,0 +1,19 @@
+
+flatten-binary-tree-to-linked-list-114.out:     file format elf32-i386
+
+
+Disassembly of section .rodata:
+
+000005d8 <_fp_hw>:
+ 5d8:	03 00                	add    eax,DWORD PTR [eax]
+	...
+
+000005dc <_IO_stdin_used>:
+ 5dc:	01 00                	add    DWORD PTR [eax],eax
+ 5de:	02 00                	add    al,BYTE PTR [eax]
+ 5e0:	61                   	popa   
+ 5e1:	62 63 64             	bound  esp,QWORD PTR [ebx+0x64]
+ 5e4:	65                   	gs
+ 5e5:	66                   	data16
+ 5e6:	67                   	addr16
+	...

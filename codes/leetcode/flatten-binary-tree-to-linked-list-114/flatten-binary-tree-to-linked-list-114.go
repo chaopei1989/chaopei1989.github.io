@@ -21,9 +21,13 @@
        \
         5
          \
-          6
+		  6
+
+注意: 需要保持前序遍历的顺序
 */
 package main
+
+import "fmt"
 
 // TreeNode represents as a binary tree node.
 type TreeNode struct {
@@ -56,4 +60,6 @@ func flatten(root *TreeNode) {
 
 func main() {
 	// do nothing
+	// flatten(nil)
+	fmt.Println("abcdefg")
 }
