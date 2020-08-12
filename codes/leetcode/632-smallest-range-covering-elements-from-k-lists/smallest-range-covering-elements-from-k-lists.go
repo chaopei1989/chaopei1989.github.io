@@ -28,3 +28,7 @@
 从各个列表中各选一个数, 其中最小值和最大值构成的区间一定符合要求. 不断缩小这个区间.
 */
 package main
+
+func smallestRange(nums [][]int) []int {
+
+}
