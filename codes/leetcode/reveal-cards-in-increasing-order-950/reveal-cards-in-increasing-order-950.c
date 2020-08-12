@@ -1,3 +1,5 @@
+#include<stdio.h>
+
 struct Node {
     struct Node* last;
     struct Node* next;
