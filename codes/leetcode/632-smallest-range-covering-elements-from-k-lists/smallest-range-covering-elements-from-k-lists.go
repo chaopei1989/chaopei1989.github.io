@@ -31,6 +31,53 @@
 */
 package main
 
+// TreeNode present 小根堆
+type TreeNode struct {
+	Val      int
+	ArrIndex int
+	Left     *TreeNode
+	Right    *TreeNode
+}
+
+func (root *TreeNode, last *TreeNode) Add(val int, arrIndex int) {
+
+}
+
+func (root *TreeNode) popTop(val int, arrIndex int) {
+
+}
+
 func smallestRange(nums [][]int) []int {
+	// invalid integer
+	var min int
+	var max int
+	var minArrIndex int
+	var maxArrIndex int
+	// 记录各个列表的当前游标
+	var cursors []int = make([]int, len(nums))
+
+	// 1. 各个列表各挑一个, 初始化
+	for i := 0; i < len(nums); i++ {
+		// 游标初始化
+		cursors[i] = 0
+		// 最大最小值初始化
+		if i == 0 {
+			min = nums[0][0]
+			max = min
+			minArrIndex = 0
+			maxArrIndex = 0
+		} else {
+			if nums[i][0] < min {
+				min = nums[i][0]
+				minArrIndex = i
+			}
+			if nums[i][0] > max {
+				max = nums[i][0]
+				maxArrIndex = i
+			}
+		}
+	}
+
+	// 2. 每次从最小的
 
 }
