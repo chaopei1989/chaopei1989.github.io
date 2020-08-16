@@ -81,3 +81,7 @@ func smallestRange(nums [][]int) []int {
 	// 2. 每次从最小的
 
 }
+
+func main() {
+
+}
