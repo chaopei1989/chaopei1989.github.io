@@ -31,55 +31,108 @@
 */
 package main
 
-// TreeNode present 小根堆
-type TreeNode struct {
+import (
+	"container/heap"
+)
+
+type Item struct {
 	Val      int
 	ArrIndex int
-	Left     *TreeNode
-	Right    *TreeNode
 }
 
-func (root *TreeNode, last *TreeNode) Add(val int, arrIndex int) {
+// IHeap 实际是个数组
+type IHeap []*Item
 
+func (h *IHeap) Len() int {
+	return len(*h)
 }
 
-func (root *TreeNode) popTop(val int, arrIndex int) {
-
+func (h *IHeap) Less(i, j int) bool {
+	return (*h)[i].Val < (*h)[j].Val
 }
+
+func (h *IHeap) Swap(i, j int) {
+	(*h)[i], (*h)[j] = (*h)[j], (*h)[i]
+}
+
+func (h *IHeap) Push(x interface{}) {
+	*h = append(*h, x.(*Item))
+}
+
+func (h *IHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+func Max(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
+}
+
+var (
+	smlHeap IHeap
+	cursors []int
+	max int
+)
 
 func smallestRange(nums [][]int) []int {
-	// invalid integer
-	var min int
-	var max int
-	var minArrIndex int
-	var maxArrIndex int
+	var from, to int
+	var delt int = -1
+	// 构建小根堆
+	smlHeap = make(IHeap, 0)
+	heap.Init(&smlHeap)
 	// 记录各个列表的当前游标
-	var cursors []int = make([]int, len(nums))
+	cursors = make([]int, len(nums))
 
-	// 1. 各个列表各挑一个, 初始化
+	// 1. 各个列表各挑第一个, 进行初始化
 	for i := 0; i < len(nums); i++ {
 		// 游标初始化
 		cursors[i] = 0
-		// 最大最小值初始化
+		tmp := new(Item)
+		tmp.ArrIndex = i
+		tmp.Val = nums[i][0]
+		heap.Push(&smlHeap, tmp)
 		if i == 0 {
-			min = nums[0][0]
-			max = min
-			minArrIndex = 0
-			maxArrIndex = 0
+			max = tmp.Val
 		} else {
-			if nums[i][0] < min {
-				min = nums[i][0]
-				minArrIndex = i
-			}
-			if nums[i][0] > max {
-				max = nums[i][0]
-				maxArrIndex = i
+			if max < tmp.Val {
+				max = tmp.Val
 			}
 		}
 	}
 
-	// 2. 每次从最小的
+	for {
+		// 2. 每次取出最小的, 计算区间并更新
+		var smlItem *Item = heap.Pop(&smlHeap).(*Item)
+		// max - smlItem.Val == delt 不采用, 因为区间边缘一定是大的
+		if delt < 0 || max - smlItem.Val < delt {
+			from = smlItem.Val
+			to = max
+			delt = to - from
+		}
+		// 3. 更新下一个游标
+		cursors[smlItem.ArrIndex]++
+		currCursor := cursors[smlItem.ArrIndex]
+		if currCursor < len(nums[smlItem.ArrIndex]) {
+			tmp := new(Item)
+			tmp.ArrIndex = smlItem.ArrIndex
+			tmp.Val = nums[smlItem.ArrIndex][currCursor]
+			heap.Push(&smlHeap, tmp)
+			if tmp.Val > max {
+				max = tmp.Val
+			}
+		} else {
+			break
+		}
+	}
 
+	// 3. return
+	return []int{from, to}
 }
 
 func main() {
